@@ -1,0 +1,91 @@
+Question 1
+fibvals <- function(n){
+x<-c(1,1)
+    while (length(x) < n) {
+        position <- length(x)
+        newx <- x[position] + x[position-1]
+        x <- c(x,newx)
+    }
+    return(x)
+}
+
+Question 3:
+
+#a
+dataset=read.csv("C:\\Users\\thanh\\Desktop\\PersonenSchaden.csv",header=TRUE,sep=",", na.strings = c("", "N", " "))
+names(dataset)
+
+#b
+mean(dataset$total)
+var(dataset$total)
+sd(dataset$total)
+max(dataset$total)
+min(dataset$total)
+median(dataset$total)
+quantile(dataset$total,0.25)
+quantile(dataset$total,0.75)
+
+#c
+hist(dataset$total/1000, 
+	main="Histogram of Settled Amounts", 
+	xlab="Dollar $000", 	
+	ylab="Frequency",
+	border="black", 
+	col="blue",
+	breaks=1000)
+
+#d
+sdelay=dataset$finmonth-mydata$accmonth;
+hist(sdelay, 
+	main="Histogram of Settlement Delay", 
+	xlab="Months", 	
+	ylab="Frequency",
+	border="black", 
+	col="blue",
+	breaks=30)
+
+#e
+e<-hist(dataset$legrep, freq=FALSE)
+e$counts<-e$counts/sum(h$count)
+plot(h,main="Histogram of Legal Representation", 
+	xlab="0 for not presenting and 1 for presenting", 	
+	ylab="Proportions to total claims", 
+	col="blue")
+
+#f
+f = hist(rbind(dataset$inj1, dataset$inj2, dataset$inj3, dataset$inj4, dataset$inj5))
+f$counts<-f$counts/sum(f$count)
+plot(f, main="Histogram of Code of Injuries", 
+	xlab="Code of injuries", 	
+	ylab="Proportions to total claims",
+	xlim=c(0,10),
+	col="blue")
+
+#h
+hist(log(dataset$total), 
+	main="Histogram of Log Dollar Values", 
+	xlab="$ Dollars", 	
+	ylab="Frequency", 
+	col="blue")
+
+#i
+claims=dataset$total
+logclaims=log(claims)
+optime=dataset$op_time
+plot(optime,claims,
+	main="Claims Value and Operating times", 
+	ylab="$ Dollars", 	
+	xlab="Months")
+plot(optime,logclaims, col=legrep,
+	main="Claims Value and Operating times", 
+	ylab="Log claim values", 	
+	xlab="Months")
+
+
+
+#k
+plot(dataset$op_time, log(dataset$total),
+	col = c("yellow", "blue")[dataset$legrep+1],
+	main="Log Claims Value and Operating times", 
+	ylab="Log claim values", 	
+	xlab="Months")
