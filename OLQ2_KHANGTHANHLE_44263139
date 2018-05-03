@@ -1,30 +1,60 @@
-#Question1:
+Github link: https://raw.githubusercontent.com/Khangthanhle/44263139_ACST890_s1_2018/master/OLQ2_KHANGTHANHLE_44263139
+
+#Question 1:
 
 #a.
 	grep "&#x2713" foo.html
 
+# grep command helps search for text &#x2713 in file foo.html. Putting &#x2713' helps the system to treat it as string. 
+# the option -w makes system to search for word only
+
 #b.
 	sed -i  '50,100 s/<th>/<th class="C">/g' foo.html
 
+# i: is option used to save as original file
+# 50,100 let system knows that this command is applied to between line 50th to 100th of file
+#"/g' is necessary, without this option, it would not replace <th class="C"> if there are more than 1 "<th>" in the same line. For example, <th><th> 
+
 #c.
+From the question onward, we assume that the novel file is my_book_20180501.txt 
+
 diff my_book_20180430.txt my_book_20180501.txt
 
+# diff command helps find the different  following by name of two text files (they have to be saved under the same directory).
+
 #d.
-sed -n 100,200p my_book_20180501.txt 
+sed -n 100,200p my_book_20180501.txt
+# without –n,  the system would understand following inputs as pattern, which will crash the command line.
+# 100,200p shows at which line command line will operate on/print out 
+#file name is my_book_20180501.txt
 
 #e.
-sed -i '100,200p' my_book_20180501.txt
+sed -i '100,200d' my_book_20180501.txt 
+# -i option help overwrites original file. 
+# 100,200d shows which line will be deleted in file and “d” is important as it make the system understand that this is a deleting command
+# -i option help overwrites original file. 
+#file name is my_book_20180501.txt
 
-#Question 2:
+#Question 2
 
 #!/bin/bash
+
 while read p;
+
+#p is the variable 
+
 do 
 	if [ ! -z "$p" ]
-   then
+ then
 	cp $p $( echo $p | sed "s/$p/..\\/..\\/new\\/ACST890_s1_2018_$p.txt/")
+
+#if [ ! -z "$p" ] help to avoid blank line.
+#cp command helps copy files from one directory to another
+#echo $p is used to print the name for the file which is followed by sed command to change file name
+#\\ is used to let the system understand that it is followed by character instead of "/" of command
 
 fi
 
 done < 'current_list'
+
 #"done <'current_list'" appoints where to read values for p
