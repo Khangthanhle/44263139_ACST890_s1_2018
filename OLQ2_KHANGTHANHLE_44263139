@@ -1,0 +1,30 @@
+#Question1:
+
+#a.
+	grep "&#x2713" foo.html
+
+#b.
+	sed -i  '50,100 s/<th>/<th class="C">/g' foo.html
+
+#c.
+diff my_book_20180430.txt my_book_20180501.txt
+
+#d.
+sed -n 100,200p my_book_20180501.txt 
+
+#e.
+sed -i '100,200p' my_book_20180501.txt
+
+#Question 2:
+
+#!/bin/bash
+while read p;
+do 
+	if [ ! -z "$p" ]
+   then
+	cp $p $( echo $p | sed "s/$p/..\\/..\\/new\\/ACST890_s1_2018_$p.txt/")
+
+fi
+
+done < 'current_list'
+#"done <'current_list'" appoints where to read values for p
