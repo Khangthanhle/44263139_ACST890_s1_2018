@@ -1,0 +1,54 @@
+#Question 2:
+import random
+
+if random.randint(0,1)==1:
+        print('Tails')
+else:
+        print('Heads')
+#Question 3:
+import sys
+
+grossincome = float(sys.argv[1])
+tax = 0
+
+# if statement
+#	Goal: applying different calculation for different level of gross income.
+
+if grossincome <= 18200:
+        tax = 0
+elif grossincome <= 37000:
+        tax = (grossincome - 18200) * 19 / 100
+elif grossincome <= 87000:
+        tax = (grossincome - 37000) * 32.5 / 100 + 3572
+elif grossincome <= 180000:
+        tax = (grossincome - 87000) * 37 / 100 + 19822
+else:
+        tax = (grossincome - 180000) * 45 / 100 + 54532
+
+# Calculate after tax income.
+aftertax = grossincome - tax
+
+print('Taxable Gross Income: $%0.2f' % grossincome)
+print('Tax Liability: $%0.2f' % tax)
+print('After Tax Income: $%0.2f' % aftertax)
+
+#Question 4:
+import sys
+
+try
+	n = int(sys.argv[1])
+
+	if n<=0:
+        print('Input %s is invalid. Please input positive integer' %sys.argv[1])
+else:
+		seed1 = 1
+		seed2 = 1
+
+		for i in range(0, n):
+        		print(seed1)
+        		newnum = seed1 + seed2
+        		seed1 = seed2
+        	  seed2 = newnum
+
+except ValueError:
+    print('Input %s is invalid. Please input a valid positive integer' % sys.argv[1])
